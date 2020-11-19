@@ -1,102 +1,63 @@
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import React from 'react'
+import React, { useState } from 'react'
+import { Layout, Menu } from 'antd';
+import {
+  BookOutlined,
+  HomeOutlined,
+  DownloadOutlined,
+  TeamOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-    transparentNav : {
-        backgroundColor : 'rgba(0,0,0,0)',
-        color : 'black',
-    }
-  }));
 
-const Layout = () => {
-    const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-    return (
-        <div className={classes.root}>
-        <AppBar position="static" className={classes.transparentNav}>
-          <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Wisdom Tutelage
-            </Typography>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
-            )}
-          </Toolbar>
-        </AppBar>
-      </div>
-    )
+const LayoutWrapper = ({children}) => {
+  const [collapsed,setCollapse] =  useState(true);
+  const collapseHandler = _ => {
+    setCollapse(!collapsed);
+  }
+  return (
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider 
+        collapsible 
+        collapsed={collapsed} 
+        onCollapse={collapseHandler}>
+          <div className="logo" />
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu.Item key="1" icon={<HomeOutlined />}>
+              Home
+            </Menu.Item>
+            <Menu.Item key="2" icon={<BookOutlined />}>
+              Courses
+            </Menu.Item>
+            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+              <Menu.Item key="3">Tom</Menu.Item>
+              <Menu.Item key="4">Bill</Menu.Item>
+              <Menu.Item key="5">Alex</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+              <Menu.Item key="6">Team 1</Menu.Item>
+              <Menu.Item key="8">Team 2</Menu.Item>
+            </SubMenu>
+            <Menu.Item key="9" icon={<DownloadOutlined />}>
+              Downloads
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout className="site-layout" onClick={() => {setCollapse(true)}}>
+          {/*<Header className="site-layout-background" style={{ padding: 0 }} /> */}
+          <Content style={{ margin: '0 16px' }}>
+            { /*<div className="site-layout-background" style={{ padding: 24, minHeight: 360, backgroundColor : 'black' }}>
+              Wisdom tutelage
+            </div> */}
+            {children}
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>Wisdom Tutelage© {new Date().getFullYear()} Created by Fibocrew</Footer>
+        </Layout>
+      </Layout>
+  )
 }
 
-export default Layout
+export default LayoutWrapper
 
-{ /*<FormGroup>
-<FormControlLabel
-  control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-  label={auth ? 'Logout' : 'Login'}
-/>
-</FormGroup> */}
+
