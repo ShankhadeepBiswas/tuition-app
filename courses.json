@@ -1,0 +1,63 @@
+[
+    {
+        "name":"B.Sc Botany",
+        "a":"Honours and General",
+        "b":"Theory and Practical",
+        "convener":"JS"
+    },
+    {
+        "name":"B.Sc Zoology",
+        "a":"General",
+        "b":"Theory and Practical",
+        "convener":"Anurima Samanta"
+    },
+    {
+        "name":"B.Sc Chemistry",
+        "a":"General",
+        "b":"Theory and Practical",
+        "convener":"Soham Mukherjee"
+    },
+    {
+        "name":"M.Sc Entrance Examination",
+        "a":"All India",
+        "b":"Botany,Zoology,Microbiology,Biotechnology",
+        "convener":"Sandip Barman"
+    },
+    {
+        "name":"M.Sc Regular",
+        "a":"Botany",
+        "b":"University of Calcutta,Vidyasagar University",
+        "convener":"Sandip Barman"
+    },
+    {
+        "name":"M.Sc Distance",
+        "a":"Botany",
+        "b":"University of Calcutta,Vidyasagar University",
+        "convener":"Sagarika Lahiri Sarkar"
+    },
+    {
+        "name":"CSIR-UGC NET Examination",
+        "a":"Life Sciences",
+        "b":"Offline,Online",
+        "convener":"Sandipta Ghosh"
+    },
+    {
+        "name":"IIT-GATE Examination",
+        "a":"Life Sciences(XL)",
+        "b":"Offline,Online",
+        "convener":"Jit Sarkar"
+    },
+    {
+        "name":"IIT-JAM Examination",
+        "a":"Life Sciences(XL)",
+        "b":"Offline,Online",
+        "convener":"JS"
+    },
+    {
+        "name":"WB-SET Examination",
+        "a":"Life Sciences(XL)",
+        "b":"Offline,Online",
+        "convener":"JS"
+    }
+
+]
