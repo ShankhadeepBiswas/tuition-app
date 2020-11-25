@@ -25,10 +25,9 @@ const Inputs = ({inptype,children,Icon,inputProps,textAreaProps,dropDownVal,onCh
                     </Select>
             break;
         case 'textarea' : 
-        Ele = <TextArea {...textAreaProps} />
+            Ele = <TextArea  {...ElementConfig}  {...textAreaProps} />
         default:
-            Ele = <Input { ...inputProps } />
-
+            Ele = <Input  {...ElementConfig}  { ...inputProps } />
     }
     return Ele
 }
